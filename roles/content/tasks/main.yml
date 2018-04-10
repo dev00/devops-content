@@ -1,0 +1,16 @@
+- name: ensure the demo folder exists
+  file:
+    dest: /var/www/demo
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: unzip content to demo folder
+  unarchive:
+    src: web_content.html
+    dest: /var/www/demo
+    owner: root
+    group: root
+    mode: 0755
+    

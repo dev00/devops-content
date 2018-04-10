@@ -1,0 +1,10 @@
+- name: ing our demo app
+  hosts: webservers
+  user: ubuntu
+  become: true
+  vars:
+    elasticsearch_host: elk
+    kibana_host: elk
+  roles:
+  - nginx
+  - filebeat

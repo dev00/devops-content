@@ -1,0 +1,21 @@
+---
+- name: install nginx
+  apt:
+    name: nginx
+    state: latest
+    cache_valid_time: 3600
+
+- name: ensure default page is absent
+  file:
+    path: /etc/nginx/sites-enabled
+    state: absent
+  notify: restart nginx
+
+- name: rollout template
+  template:
+    src: demo.conf.j2
+    dest: /etc/nginx/conf.d/demo.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nginx
