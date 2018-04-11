@@ -6,5 +6,6 @@
     elasticsearch_host: elk
     kibana_host: elk
   roles:
+  - sudo 
   - nginx
   - filebeat
